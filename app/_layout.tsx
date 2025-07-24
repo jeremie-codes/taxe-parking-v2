@@ -1,29 +1,21 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
 import { Stack } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import 'react-native-reanimated';
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  if (!loaded) {
-    // Async font loading only occurs in development.
-    return null;
-  }
-
+export default function AuthLayout() {
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
+      <Stack screenOptions={{ 
+        headerShown: false,
+        animation: 'slide_from_right',
+        contentStyle: { backgroundColor: 'transparent' }
+      }}>
+        <Stack.Screen name="(screens)/AuthScreen" />
+        <Stack.Screen name="(screens)/LoginScreen" />
+        <Stack.Screen name="(screens)/HomeScreen" />
+        <Stack.Screen name="(screens)/ControlScreen" />
+        <Stack.Screen name="(screens)/FormScreen" />
+        <Stack.Screen name="(screens)/PrintScreen" />
+        <Stack.Screen name="(screens)/StoryScreen" />
+        <Stack.Screen name="(screens)/StoryPrintScreen" />
+        <Stack.Screen name="(screens)/UserScreen" />
       </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
   );
 }
