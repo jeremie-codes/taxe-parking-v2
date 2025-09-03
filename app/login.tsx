@@ -72,7 +72,7 @@ export default function Screen() {
             }
             
             else if (retour.status == "error") await AsyncStorage.setItem('dashboard', JSON.stringify({ Tickets: 0, Mont_Pos: 0 }))
-            router.replace('/(screens)/home'); // Naviguer vers Home après connexion
+            router.replace('/(screens)/home');
               
           }
           else if (data.user.accès === "ouvert" && data.user.role === "superviseur") {

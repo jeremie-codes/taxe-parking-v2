@@ -77,7 +77,7 @@ export default function Screen() {
     };
 
     getUser();
-  }, [])
+  }, []);
 
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: "center", paddingHorizontal: 30 }}>
