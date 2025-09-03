@@ -1,18 +1,17 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Stack, useRouter, SplashScreen } from 'expo-router';
-import { useEffect, useState } from 'react'
-import { useFrameworkReady } from '@/hooks/useFrameworkReady';
+import { useEffect, useState } from 'react';
 
 // Prevent splash screen from auto-hiding
 SplashScreen.preventAutoHideAsync();
 
 export default function Layout() {
-  useFrameworkReady();
   const [isAppReady, setIsAppReady] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
     async function initializeApp() {
+  useFrameworkReady();
       try {
         // Check user authentication state
         const user = await AsyncStorage.getItem('user');
