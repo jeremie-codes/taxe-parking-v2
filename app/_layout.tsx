@@ -83,5 +83,6 @@ function AuthGate() {
 }
 
 export default function Layout() {
+  useFrameworkReady();
   return <AuthGate />;
 }
