@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.jeremie.taxeparking"
+      "bundleIdentifier": "com.taxeparking.v2"
     },
     "android": {
       "adaptiveIcon": {
@@ -18,7 +18,7 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "package": "com.jeremie.taxeparking"
+      "package": "com.taxeparking.v2"
     },
     "web": {
       "bundler": "metro",
@@ -42,7 +42,7 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "07fae031-537e-45ab-b32a-691aa73e7eaf"
+        "projectId": "4ca3fe72-1b8a-44ed-870a-99ed04b6f363"
       }
     }
   }

@@ -1,21 +1,32 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Stack } from 'expo-router';
+import { useEffect, useState } from 'react';
 
-export default function AuthLayout() {
+export default function Layout() {
+    const [user, SetUser] = useState<any>({});
+    const getUser = async () => {
+      try {
+        const value = await AsyncStorage.getItem('user');
+        if (value !== null) {
+          SetUser(JSON.parse(value));
+        }
+      } catch (e) {
+        console.error('Error fetching data:', e);
+      }
+    };
+
+    useEffect(() => {
+      getUser()
+    }, []);
+
   return (
       <Stack screenOptions={{ 
         headerShown: false,
-        animation: 'slide_from_right',
+        animation: 'fade',
         contentStyle: { backgroundColor: 'transparent' }
       }}>
-        <Stack.Screen name="(screens)/AuthScreen" />
-        <Stack.Screen name="(screens)/LoginScreen" />
-        <Stack.Screen name="(screens)/HomeScreen" />
-        <Stack.Screen name="(screens)/ControlScreen" />
-        <Stack.Screen name="(screens)/FormScreen" />
-        <Stack.Screen name="(screens)/PrintScreen" />
-        <Stack.Screen name="(screens)/StoryScreen" />
-        <Stack.Screen name="(screens)/StoryPrintScreen" />
-        <Stack.Screen name="(screens)/UserScreen" />
+        <Stack.Screen name="auth" />
+        {user.id ? <Stack.Screen name="(screens)/home" /> : <Stack.Screen name="login" />}
       </Stack>
   );
-}
+} 
